@@ -162,7 +162,10 @@ for inst in running:
       else:
         outfile.write("%s\n" % i.private_dns_name)
     else:
-      outfile.write("%s\n" % i.private_dns_name.split('.')[0])
+      if args.public == True:
+        outfile.write("%s\n" % i.public_dns_name.split('.')[0])
+      else:
+        outfile.write("%s\n" % i.private_dns_name.split('.')[0])
 
 if args.filename != None:
   outfile.close()
